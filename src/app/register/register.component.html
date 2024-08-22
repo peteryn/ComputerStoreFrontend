@@ -1,0 +1,5 @@
+<form (ngSubmit)="onSubmit()" #registerForm="ngForm">
+	<input type="text" id="username" required [(ngModel)]="model.username" name="username" />
+	<input type="password" id="password" required [(ngModel)]="model.password" name="username" />
+	<button type="submit" [disabled]="!registerForm.form.valid">Submit</button>
+</form>

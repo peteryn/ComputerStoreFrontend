@@ -1,0 +1,27 @@
+#top-container {
+	max-width: 1280px;
+	margin: auto;
+	margin-top: 1em;
+}
+
+nav {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	max-width: 1280px;
+}
+
+ul {
+	list-style-type: none;
+	overflow: hidden;
+}
+
+li {
+	float: left;
+}
+
+li a {
+	display: block;
+	text-decoration: none;
+	padding: 0.5em;
+}
