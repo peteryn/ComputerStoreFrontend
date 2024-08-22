@@ -1,0 +1,16 @@
+form {
+    max-width: fit-content;
+    margin: auto;
+}
+
+label {
+    display: block;
+}
+
+.form-group {
+    margin: 0.5em 0;
+}
+
+button {
+    margin-top: 0.5em;
+}

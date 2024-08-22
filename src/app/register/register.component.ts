@@ -21,13 +21,8 @@ export class RegisterComponent {
 
 	onSubmit() {
 		this.submitted = true;
-		console.log('Submitted the form!');
-		this.http.get('/api/spring').subscribe((res) => {
+		this.http.post('/api/register', this.model).subscribe((res) => {
 			console.log(`res ${res}`);
 		});
-
-		// this.http.get(`${this.baseURL}/api/spring`).subscribe((res) => {
-		// 	console.log('anything');
-		// });
 	}
 }
