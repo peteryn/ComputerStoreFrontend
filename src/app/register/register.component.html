@@ -1,4 +1,88 @@
-<form (ngSubmit)="onSubmit()" #registerForm="ngForm">
+<main class="p-3 container mt-5">
+	<div class="row">
+		<form
+			class="needs-validation mx-auto col-lg-4 p-5 border rounded"
+			(ngSubmit)="onSubmit()"
+			novalidate
+			#registerForm="ngForm"
+		>
+			<h1 class="mb-2">Sign Up</h1>
+			<div class="mb-3">
+				<label for="exampleInputEmail1" class="form-label">Email address</label>
+				<input
+					type="email"
+					class="form-control"
+					id="exampleInputEmail1"
+					aria-describedby="emailHelp"
+					required
+					[(ngModel)]="model.username"
+					#emailField="ngModel"
+					name="email"
+					placeholder="john@example.com"
+				/>
+				<div class="invalid-feedback">Please enter a valid email</div>
+			</div>
+			<div class="mb-3">
+				<label for="exampleInputPassword1" class="form-label">Password</label>
+				<input
+					type="password"
+					class="form-control"
+					id="exampleInputPassword1"
+					required
+					[(ngModel)]="model.password"
+					name="password"
+					pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$"
+				/>
+				<div class="invalid-feedback text-wrap">
+					Please enter a password with at least 1 uppercase, lowercase, and number
+				</div>
+			</div>
+			<button type="submit" class="btn btn-primary w-100">Submit</button>
+		</form>
+	</div>
+</main>
+
+<div class="toast-container position-fixed bottom-0 start-50 translate-middle-x p-3">
+	<div
+		class="toast align-items-center text-bg-primary border-0 text-bg-success"
+		role="alert"
+		aria-live="assertive"
+		aria-atomic="true"
+		id="success-toast"
+	>
+		<div class="d-flex">
+			<div class="toast-body">Success! Please verify your email</div>
+			<button
+				type="button"
+				class="btn-close btn-close-white me-2 m-auto"
+				data-bs-dismiss="toast"
+				aria-label="Close"
+			></button>
+		</div>
+	</div>
+</div>
+
+<div class="toast-container position-fixed bottom-0 start-50 translate-middle-x p-3">
+	<div
+		class="toast align-items-center text-bg-primary border-0 text-bg-danger"
+		role="alert"
+		aria-live="assertive"
+		aria-atomic="true"
+		id="failure-toast"
+	>
+		<div class="d-flex">
+			<div class="toast-body">Username already taken</div>
+			<button
+				type="button"
+				class="btn-close btn-close-white me-2 m-auto"
+				data-bs-dismiss="toast"
+				aria-label="Close"
+			></button>
+		</div>
+	</div>
+</div>
+
+<!-- <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
 	<div class="form-group">
 		<label for="username">Email</label>
 		<input
@@ -26,4 +110,4 @@
 		/>
 	</div>
 	<button type="submit" [disabled]="!registerForm.form.valid">Submit</button>
-</form>
+</form> -->

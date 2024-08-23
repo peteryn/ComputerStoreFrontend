@@ -1,1 +1,38 @@
-<p>login works!</p>
+<main class="form-signin p-3 container" novalidate>
+	<form (ngSubmit)="onSubmit()" #registerForm="ngForm">
+		<div class="form-floating">
+			<input
+				type="email"
+				class="form-control was-validated"
+				id="email"
+				placeholder="name@example.com"
+				required
+				pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+				[(ngModel)]="model.username"
+				name="email"
+				#emailField="ngModel"
+			/>
+			<label for="email">Email address</label>
+		</div>
+		<div class="form-floating">
+			<input
+				type="password"
+				class="form-control"
+				id="password"
+				placeholder="Password"
+				required
+				[(ngModel)]="model.password"
+				#passwordField="ngModel"
+				name="password"
+			/>
+			<label for="password">Password</label>
+		</div>
+		<button
+			class="btn btn-primary w-100 py-2"
+			type="submit"
+			[disabled]="!registerForm.form.valid"
+		>
+			Sign in
+		</button>
+	</form>
+</main>

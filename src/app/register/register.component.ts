@@ -1,8 +1,10 @@
 import { Component, inject } from '@angular/core';
 import { User } from '../user';
 import { FormsModule } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { catchError, throwError } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-register',
@@ -12,7 +14,7 @@ import { CommonModule } from '@angular/common';
 	styleUrl: './register.component.css',
 })
 export class RegisterComponent {
-	constructor(private http: HttpClient) {}
+	constructor(private http: HttpClient, private router: Router) {}
 
 	model = new User('', '');
 
@@ -20,8 +22,32 @@ export class RegisterComponent {
 
 	onSubmit() {
 		this.submitted = true;
-		this.http.post('/api/register', this.model).subscribe((res) => {
-			console.log(`res ${res}`);
-		});
+		const form = document.getElementsByClassName('needs-validation')[0] as HTMLFormElement;
+		if (form.checkValidity()) {
+			this.http
+				.post('/api/register', this.model, { observe: 'response' })
+				.pipe(
+					catchError((error: HttpErrorResponse) => {
+						const failureToast = document.getElementById('failure-toast');
+						const toastBootstrap = (window as any).bootstrap.Toast.getOrCreateInstance(
+							failureToast
+						);
+						toastBootstrap.show();
+						return throwError(() => error);
+					})
+				)
+				.subscribe((res: any) => {
+					const successToast = document.getElementById('success-toast');
+					const toastBootstrap = (window as any).bootstrap.Toast.getOrCreateInstance(
+						successToast
+					);
+					toastBootstrap.show();
+					setTimeout(() => {
+						this.router.navigate(['/login']);
+					}, 3000);
+				});
+		} else {
+			form.classList.add('was-validated');
+		}
 	}
 }
