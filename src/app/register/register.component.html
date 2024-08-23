@@ -1,11 +1,29 @@
 <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
 	<div class="form-group">
-		<label for="username">Username</label>
-		<input type="text" id="username" required [(ngModel)]="model.username" name="username" />
+		<label for="username">Email</label>
+		<input
+			type="email"
+			id="email"
+			required
+			pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+			[(ngModel)]="model.username"
+			name="email"
+			#emailField="ngModel"
+		/>
+		<div *ngIf="emailField.invalid && emailField.touched">
+			<span *ngIf="emailField.hasError('required')">Email is required.</span>
+			<span *ngIf="emailField.hasError('pattern')">Please enter a valid email address.</span>
+		</div>
 	</div>
 	<div class="form-group">
 		<label for="password">Password</label>
-		<input type="password" id="password" required [(ngModel)]="model.password" name="username" />
+		<input
+			type="password"
+			id="password"
+			required
+			[(ngModel)]="model.password"
+			name="username"
+		/>
 	</div>
 	<button type="submit" [disabled]="!registerForm.form.valid">Submit</button>
 </form>

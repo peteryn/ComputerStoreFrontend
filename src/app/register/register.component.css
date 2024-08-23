@@ -3,6 +3,10 @@ form {
     margin: auto;
 }
 
+input {
+    width: 300px;
+}
+
 label {
     display: block;
 }

@@ -2,11 +2,12 @@ import { Component, inject } from '@angular/core';
 import { User } from '../user';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 
 @Component({
 	selector: 'app-register',
 	standalone: true,
-	imports: [FormsModule],
+	imports: [FormsModule, CommonModule],
 	templateUrl: './register.component.html',
 	styleUrl: './register.component.css',
 })
@@ -16,8 +17,6 @@ export class RegisterComponent {
 	model = new User('', '');
 
 	submitted = false;
-
-	baseURL = 'localhost:8080';
 
 	onSubmit() {
 		this.submitted = true;
