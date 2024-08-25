@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { User } from '../user';
 import { FormsModule } from '@angular/forms';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { catchError, throwError } from 'rxjs';
 
 @Component({
 	selector: 'app-login',
@@ -10,9 +13,25 @@ import { FormsModule } from '@angular/forms';
 	styleUrl: './login.component.css',
 })
 export class LoginComponent {
-    model = new User("", "")
+	constructor(private http: HttpClient, private router: Router) {}
 
-    onSubmit() {
+	model = new User('', '');
 
-    }
+	onSubmit() {
+		this.http
+			.post('/api/login', this.model)
+			.pipe(
+				catchError((error: HttpErrorResponse) => {
+					console.log('Error logging in');
+					return throwError(() => error);
+				})
+			)
+			.subscribe((res: any) => {
+				console.log('Logged in');
+				console.log(res);
+				// const setCookieHeader = res.headers.get('Set-Cookie');
+				const setCookieHeader = res.headers;
+				console.log(`Cookie value: ${setCookieHeader}`);
+			});
+	}
 }

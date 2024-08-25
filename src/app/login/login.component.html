@@ -1,13 +1,15 @@
-<main class="form-signin p-3 container" novalidate>
-	<form (ngSubmit)="onSubmit()" #registerForm="ngForm">
-		<div class="form-floating">
+<main class="form-signin p-3 container mt-5" novalidate>
+	<div class="row">
+
+	<form (ngSubmit)="onSubmit()" #registerForm="ngForm" class="mx-auto col-lg-4 p-5 border rounded">
+		<h1 class="mb-2">Login</h1>
+		<div class="form-floating mt-2">
 			<input
 				type="email"
 				class="form-control was-validated"
 				id="email"
 				placeholder="name@example.com"
 				required
-				pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
 				[(ngModel)]="model.username"
 				name="email"
 				#emailField="ngModel"
@@ -35,4 +37,5 @@
 			Sign in
 		</button>
 	</form>
+	</div>
 </main>
