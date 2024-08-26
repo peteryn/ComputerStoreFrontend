@@ -28,10 +28,7 @@ export class LoginComponent {
 			)
 			.subscribe((res: any) => {
 				console.log('Logged in');
-				console.log(res);
-				// const setCookieHeader = res.headers.get('Set-Cookie');
-				const setCookieHeader = res.headers;
-				console.log(`Cookie value: ${setCookieHeader}`);
+				this.router.navigate(['/profile']);
 			});
 	}
 }
