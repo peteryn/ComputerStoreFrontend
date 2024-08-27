@@ -18,6 +18,7 @@ export class LoginComponent {
 	model = new User('', '');
 
 	onSubmit() {
+		const last_visited_url: string | null = localStorage.getItem('last_visited_url');
 		this.http
 			.post('/api/login', this.model)
 			.pipe(
@@ -27,8 +28,12 @@ export class LoginComponent {
 				})
 			)
 			.subscribe((res: any) => {
-				console.log('Logged in');
-				this.router.navigate(['/profile']);
+				if (last_visited_url) {
+					localStorage.removeItem('last_visited_url')	
+					this.router.navigate([`/${last_visited_url}`])
+				} else {
+					this.router.navigate(['/profile']);
+				}
 			});
 	}
 }
