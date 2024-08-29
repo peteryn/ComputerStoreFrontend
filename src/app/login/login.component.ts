@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { catchError, throwError } from 'rxjs';
+import { AuthService } from '../auth.service';
 
 @Component({
 	selector: 'app-login',
@@ -13,14 +14,18 @@ import { catchError, throwError } from 'rxjs';
 	styleUrl: './login.component.css',
 })
 export class LoginComponent {
-	constructor(private http: HttpClient, private router: Router) {}
+	constructor(
+		private http: HttpClient,
+		private router: Router,
+		private authService: AuthService
+	) {}
 
 	model = new User('', '');
 
 	onSubmit() {
 		const last_visited_url: string | null = localStorage.getItem('last_visited_url');
 		this.http
-			.post('/api/login', this.model)
+			.post('/api/login', this.model, { withCredentials: true })
 			.pipe(
 				catchError((error: HttpErrorResponse) => {
 					console.log('Error logging in');
@@ -28,9 +33,10 @@ export class LoginComponent {
 				})
 			)
 			.subscribe((res: any) => {
+				this.authService.login();
 				if (last_visited_url) {
-					localStorage.removeItem('last_visited_url')	
-					this.router.navigate([`/${last_visited_url}`])
+					localStorage.removeItem('last_visited_url');
+					this.router.navigate([`/${last_visited_url}`]);
 				} else {
 					this.router.navigate(['/profile']);
 				}
