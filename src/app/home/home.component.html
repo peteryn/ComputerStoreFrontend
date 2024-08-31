@@ -1,1 +1,86 @@
-<p>This is the home page</p>
+<main class="p-5 container text-center">
+	<h1>User Authentication and Authorization Demo</h1>
+	<p>A full stack project that explores how web applications stay secure</p>
+	<a href="#stack" class="btn btn-outline-primary mx-1">See Stack</a>
+	<button class="btn btn-primary mx-1"><i class="bi bi-github me-1"></i>Source Code</button>
+</main>
+
+<div class="bg-light">
+	<section class="p-5 container text-center">
+		<div class="row align-items-center">
+			<div class="col-lg-6 text-start">
+				<div id="middle">
+					<h1>Intro and Motivation</h1>
+					<p>
+						I'm Peter and I want to build a full stack
+						<span class="text-primary">CRUD </span>application with a user account
+						system. Solutions like Auth0 and Clerk exist, but I wanted to learn the hard
+						way.
+					</p>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<img src="assets/images/peter.webp" class="img-fluid" alt="" width="300px" />
+			</div>
+		</div>
+	</section>
+</div>
+
+<section class="p-5 container text-center" id="stack">
+	<h1>Technology Stack</h1>
+	<div class="row g-4 pt-5 row-cols-1 row-cols-lg-3">
+		<div class="feature col">
+			<img src="assets/images/angular.png" alt="" width="100px" />
+			<h3 class="fs-2 text-body-emphasis pt-1">Angular</h3>
+			<p>A neat batteries included JavaScript framework</p>
+		</div>
+		<div class="feature col">
+			<img src="assets/images/springboot.png" alt="" width="100px" />
+			<h3 class="fs-2 text-body-emphasis pt-1">Spring Boot</h3>
+			<p>One of the most in demand backend frameworks</p>
+		</div>
+		<div class="feature col">
+			<img src="assets/images/postgresql.svg" alt="" width="100px" />
+			<h3 class="fs-2 text-body-emphasis pt-1">PostgreSQL</h3>
+			<p>A popular open source relational database</p>
+		</div>
+	</div>
+</section>
+
+<div class="bg-light">
+	<section class="container p-5 text-center">
+		<h1>Demo Explanation</h1>
+		<div class="row">
+			<div class="col-lg-4">
+				<h2>User Registers</h2>
+				<p>User enters email and password</p>
+			</div>
+			<div class="col-lg-4">
+				<h2>User Login</h2>
+				<p>Use logs in with email and password</p>
+			</div>
+			<div class="col-lg-4">
+				<h2>Server Responds</h2>
+				<p>Server verifies credentials and responds with JSON Web Token (JWT)</p>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-lg-4">
+				<h2>User accesses secure page</h2>
+				<p>
+					The user is trying to access a page that only a logged in user can access. The
+					user must include the JWT in the request
+				</p>
+			</div>
+			<div class="col-lg-4">
+				<h2>Server Verifies JWT</h2>
+				<p>If the JWT is valid, server responds with secured page details</p>
+			</div>
+            <div class="col-lg-4">
+                <h2>User accesses service</h2>
+                <p>The user can use the secured resource and perform other actions</p>
+            </div>
+		</div>
+	</section>
+</div>

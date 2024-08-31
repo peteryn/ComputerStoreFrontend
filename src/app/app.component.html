@@ -1,17 +1,35 @@
 <nav class="nav p-3 text-bg-dark">
 	<div class="container">
 		<div class="d-flex justify-content-between align-itmes-stretch">
-			<a routerLink="home" class="navbar-brand fs-4">User Auth</a>
+			<a routerLink="/" class="navbar-brand fs-4">User Auth</a>
 			<div class="text-end">
-				<button *ngIf="!authService.isAuthenticted()" type="button" class="btn btn-outline-primary me-2" routerLink="/login">
+				<button
+					*ngIf="!authService.isAuthenticted()"
+					type="button"
+					class="btn btn-outline-primary me-2"
+					routerLink="/login"
+				>
 					Login
 				</button>
-				<button *ngIf="!authService.isAuthenticted()" type="button" class="btn btn-primary" routerLink="/register">Sign-up</button>
-				<button *ngIf="authService.isAuthenticted()" type="button" class="btn btn-outline-primary" (click)="onLogout()">Log Out</button>
-				<!-- <button *ngIf="true" type="button" class="btn btn-outline-primary" (click)="onLogout()">Log Out</button> -->
+				<button
+					*ngIf="!authService.isAuthenticted()"
+					type="button"
+					class="btn btn-primary"
+					routerLink="/register"
+				>
+					Sign-up
+				</button>
+				<button
+					*ngIf="authService.isAuthenticted()"
+					type="button"
+					class="btn btn-outline-primary"
+					(click)="onLogout()"
+				>
+					Log Out
+				</button>
 			</div>
 		</div>
 	</div>
 </nav>
 
-<router-outlet></router-outlet>
+<router-outlet> </router-outlet>
