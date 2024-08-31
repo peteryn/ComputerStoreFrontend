@@ -1,8 +1,8 @@
 <main class="p-5 container text-center">
 	<h1>User Authentication and Authorization Demo</h1>
 	<p>A full stack project that explores how web applications stay secure</p>
-	<a href="#stack" class="btn btn-outline-primary mx-1">See Stack</a>
-	<button class="btn btn-primary mx-1"><i class="bi bi-github me-1"></i>Source Code</button>
+	<a href="#stack" class="btn btn-outline-primary mx-1">See Tech Stack</a>
+	<button type="button" class="btn btn-primary mx-1" routerLink="/register">Sign-up</button>
 </main>
 
 <div class="bg-light">
@@ -48,39 +48,98 @@
 </section>
 
 <div class="bg-light">
-	<section class="container p-5 text-center">
-		<h1>Demo Explanation</h1>
-		<div class="row">
-			<div class="col-lg-4">
-				<h2>User Registers</h2>
-				<p>User enters email and password</p>
-			</div>
-			<div class="col-lg-4">
-				<h2>User Login</h2>
-				<p>Use logs in with email and password</p>
-			</div>
-			<div class="col-lg-4">
-				<h2>Server Responds</h2>
-				<p>Server verifies credentials and responds with JSON Web Token (JWT)</p>
+	<section class="container p-5">
+		<h1 class="text-center pb-4">Demo Explanation</h1>
+
+		<div class="px-4 pb-4">
+			<div class="row g-4 row-cols-1 row-cols-lg-3">
+				<div class="col d-flex align-items-start">
+					<div
+						class="icon-square text-body-emphasis secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3"
+					>
+						<i class="bi bi-1-square-fill"></i>
+					</div>
+					<div>
+						<h3 class="fs-2 text-body-emphasis">User Registration</h3>
+						<p>User enters email and password</p>
+					</div>
+				</div>
+				<div class="col d-flex align-items-start">
+					<div
+						class="icon-square text-body-emphasis d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3"
+					>
+						<i class="bi bi-2-square-fill"></i>
+					</div>
+					<div>
+						<h3 class="fs-2 text-body-emphasis">User Login</h3>
+						<p>Use logs in with email and password</p>
+					</div>
+				</div>
+				<div class="col d-flex align-items-start">
+					<div
+						class="icon-square text-body-emphasis d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3"
+					>
+						<i class="bi bi-3-square-fill"></i>
+					</div>
+					<div>
+						<h3 class="fs-2 text-body-emphasis">Server Responds</h3>
+						<p>Server verifies credentials and responds with JSON Web Token (JWT)</p>
+					</div>
+				</div>
 			</div>
 		</div>
-
-		<div class="row">
-			<div class="col-lg-4">
-				<h2>User accesses secure page</h2>
-				<p>
-					The user is trying to access a page that only a logged in user can access. The
-					user must include the JWT in the request
-				</p>
+		<div class="px-4" id="hanging-icons">
+			<div class="row g-4 row-cols-1 row-cols-lg-3">
+				<div class="col d-flex align-items-start">
+					<div
+						class="icon-square text-body-emphasis secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3"
+					>
+						<i class="bi bi-4-square-fill"></i>
+					</div>
+					<div>
+						<h3 class="fs-2 text-body-emphasis">Secure Page Access</h3>
+						<p>
+							The user is trying to access a page that only a logged in user can
+							access. The JWT is included with the user's request.
+						</p>
+					</div>
+				</div>
+				<div class="col d-flex align-items-start">
+					<div
+						class="icon-square text-body-emphasis d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3"
+					>
+						<i class="bi bi-5-square-fill"></i>
+					</div>
+					<div>
+						<h3 class="fs-2 text-body-emphasis">Server Verifies JWT</h3>
+						<p>If the JWT is valid, server responds with secured page details</p>
+					</div>
+				</div>
+				<div class="col d-flex align-items-start">
+					<div
+						class="icon-square text-body-emphasis d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3"
+					>
+						<i class="bi bi-6-square-fill"></i>
+					</div>
+					<div>
+						<h3 class="fs-2 text-body-emphasis">User Accesses Service</h3>
+						<p>The user can use the secured resource and perform other actions</p>
+					</div>
+				</div>
 			</div>
-			<div class="col-lg-4">
-				<h2>Server Verifies JWT</h2>
-				<p>If the JWT is valid, server responds with secured page details</p>
-			</div>
-            <div class="col-lg-4">
-                <h2>User accesses service</h2>
-                <p>The user can use the secured resource and perform other actions</p>
-            </div>
+		</div>
+		<div class="text-center">
+			<h2 class="pt-5 pb-2">Try It Out</h2>
+			<a href="" class="btn btn-primary mx-1">Sign Up</a>
+		</div>
+		<div class="text-center">
+			<h2 class="pt-5 pb-2">...Or Learn More</h2>
+			<a
+				href="https://github.com/peteryn/ComputerStoreFrontend"
+				class="btn btn-outline-primary mx-1"
+				><i class="bi bi-github me-1"></i>Source Code</a
+			>
+			<a href="" class="btn btn-warning mx-1">See Technical Challenges</a>
 		</div>
 	</section>
 </div>
