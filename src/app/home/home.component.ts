@@ -7,12 +7,7 @@ import { RegisterComponent } from '../register/register.component';
 @Component({
 	selector: 'app-home',
 	standalone: true,
-	imports: [
-		RouterOutlet,
-		RouterLink,
-		RouterLinkActive,
-		RegisterComponent,
-	],
+	imports: [RouterOutlet, RouterLink, RouterLinkActive, RegisterComponent],
 	templateUrl: './home.component.html',
 	styleUrl: './home.component.css',
 })
