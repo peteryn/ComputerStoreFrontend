@@ -20,12 +20,16 @@ export class LoginComponent {
 		private authService: AuthService
 	) {}
 
-	model = new User('', '');
+	model = new User('', '', '', '');
 
 	onSubmit() {
 		const last_visited_url: string | null = localStorage.getItem('last_visited_url');
 		this.http
-			.post('/api/login', this.model, { withCredentials: true })
+			.post(
+				'/api/login',
+				{ username: this.model.username, password: this.model.password },
+				{ withCredentials: true }
+			)
 			.pipe(
 				catchError((error: HttpErrorResponse) => {
 					console.log('Error logging in');

@@ -16,7 +16,7 @@ import { Router } from '@angular/router';
 export class RegisterComponent {
 	constructor(private http: HttpClient, private router: Router) {}
 
-	model = new User('', '');
+	model = new User('', '', '', '');
 
 	submitted = false;
 
@@ -36,7 +36,7 @@ export class RegisterComponent {
 						return throwError(() => error);
 					})
 				)
-				.subscribe((res: any) => {
+				.subscribe(() => {
 					const successToast = document.getElementById('success-toast');
 					const toastBootstrap = (window as any).bootstrap.Toast.getOrCreateInstance(
 						successToast
