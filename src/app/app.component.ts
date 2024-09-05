@@ -17,16 +17,22 @@ export class AppComponent {
 
 	loggedIn = false;
 
-	constructor(public authService: AuthService, private http: HttpClient, private router: Router) {
-
+	constructor(
+		public authService: AuthService,
+		private http: HttpClient,
+		private router: Router
+	) {
+		
 	}
 
 	onLogout() {
 		console.log('Log out');
-		this.http.post('/api/logout', {}, { withCredentials: true, observe: 'response' }).subscribe(res => {
-			console.log(res);
-			this.router.navigate(['/login']);
-		});
+		this.http
+			.post('/api/logout', {}, { withCredentials: true, observe: 'response' })
+			.subscribe((res) => {
+				console.log(res);
+				this.router.navigate(['/login']);
+			});
 		this.authService.logout();
 	}
 }

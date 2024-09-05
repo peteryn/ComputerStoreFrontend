@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
@@ -5,14 +6,30 @@ import { BehaviorSubject, Observable } from 'rxjs';
 	providedIn: 'root',
 })
 export class AuthService {
-	constructor() {}
+	constructor(private http: HttpClient) {
+		console.log('constructor');
+		this.http.get('/api/check');
+	}
 
 	isAuthenticted(): boolean {
-		return localStorage.getItem('loggedIn') === 'true';
+		const temp = localStorage.getItem('timestamp');
+		if (temp) {
+			const expireDate = new Date(temp);
+			if (expireDate < new Date()) {
+				return false;
+			} else {
+				return localStorage.getItem('loggedIn') === 'true';
+			}
+		}
+		return false;
 	}
 
 	login() {
 		localStorage.setItem('loggedIn', 'true');
+		const expire = new Date();
+		expire.setMinutes(expire.getMinutes() + 5);
+		localStorage.setItem('timestamp', expire.toString());
+		console.log(expire.toString());
 	}
 
 	logout() {
