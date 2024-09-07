@@ -1,6 +1,6 @@
 <nav class="nav p-3 text-bg-dark">
 	<div class="container">
-		<div class="d-flex justify-content-between align-itmes-stretch">
+		<div class="d-flex justify-content-between align-items-stretch">
 			<a routerLink="/" class="navbar-brand fs-4">User Auth</a>
 			<div class="text-end">
 				<button
@@ -32,4 +32,21 @@
 	</div>
 </nav>
 
+@if (authService.isAuthenticted()) {
+
+<div class="bg-body-secondary p-1">
+	<div class="container">
+		<header class="d-flex justify-content-center">
+			<ul class="nav">
+				<li class="nav-item"><a class="nav-link" routerLink="">Home</a></li>
+				<li class="nav-item"><a class="nav-link" routerLink="profile">Profile</a></li>
+				<li class="nav-item">
+					<a class="nav-link" routerLink="profile">Account Settings</a>
+				</li>
+			</ul>
+		</header>
+	</div>
+</div>
+
+}
 <router-outlet> </router-outlet>
