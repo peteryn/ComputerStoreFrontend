@@ -1,0 +1,36 @@
+<div class="container p-3 my-5">
+	<div class="row">
+		<form
+			class="mx-auto col-lg-5 p-5 border border-danger rounded needs-validation"
+			(ngSubmit)="onSubmit()"
+		>
+			<h1>Change Password</h1>
+			<div class="py-2">
+				<label for="old-password" class="form-label">Old Password</label>
+				<input
+					type="password"
+					class="form-control"
+					id="old-password"
+					name="oldPassword"
+					required
+                    [(ngModel)]="oldPassword"
+				/>
+				<div class="invalid-feedback">Please enter your old password</div>
+			</div>
+			<div class="py-2">
+				<label for="new-password" class="form-label">New Password</label>
+				<input
+					type="password"
+					class="form-control"
+					id="new-password"
+					name="newPassword"
+					required
+					pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$"
+                    [(ngModel)]="newPassword"
+				/>
+				<div class="invalid-feedback">Please enter a valid password</div>
+			</div>
+			<button type="submit" class="btn btn-danger w-100 mt-2">Change Password</button>
+		</form>
+	</div>
+</div>
