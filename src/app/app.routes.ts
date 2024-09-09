@@ -16,6 +16,6 @@ export const routes: Routes = [
 		component: AccountSettingsComponent,
 		canActivate: [authorizationGuard],
 	},
-	{ path: 'profile', component: ProfileComponent },
+	{ path: 'profile', component: ProfileComponent, canActivate: [authorizationGuard] },
 	{ path: 'test', component: TestComponent, canActivate: [authorizationGuard] },
 ];
