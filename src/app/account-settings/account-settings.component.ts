@@ -6,16 +6,21 @@ import { User } from '../user';
 import { SuccessToastComponent } from '../success-toast/success-toast.component';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
+import { FailureToastComponent } from '../failure-toast/failure-toast.component';
 
 @Component({
 	selector: 'app-account-settings',
 	standalone: true,
-	imports: [FormsModule, SuccessToastComponent],
+	imports: [FormsModule, SuccessToastComponent, FailureToastComponent],
 	templateUrl: './account-settings.component.html',
 	styleUrl: './account-settings.component.css',
 })
 export class AccountSettingsComponent {
-	constructor(private http: HttpClient, private authService: AuthService, private router: Router) {}
+	constructor(
+		private http: HttpClient,
+		private authService: AuthService,
+		private router: Router
+	) {}
 
 	oldPassword: string = '';
 	newPassword: string = '';
@@ -26,22 +31,18 @@ export class AccountSettingsComponent {
 		const form = document.getElementsByClassName('needs-validation')[0] as HTMLFormElement;
 		if (form.checkValidity()) {
 			this.http
-				.put('/api/changePassword', {
+				.put('/api/change-password', {
 					oldPassword: this.oldPassword,
 					newPassword: this.newPassword,
 				})
 				.pipe(
 					catchError((error: HttpErrorResponse) => {
-						console.log('Invalid response');
 						return throwError(() => error);
 					})
 				)
 				.subscribe(() => {
-					console.log('Sucessfully updated');
 					SuccessToastComponent.showToast();
 				});
-
-			console.log('passed');
 		} else {
 			form.classList.add('was-validated');
 		}
@@ -57,13 +58,12 @@ export class AccountSettingsComponent {
 				})
 				.pipe(
 					catchError((error: HttpErrorResponse) => {
-						console.log('password does not match');
+						FailureToastComponent.showToast();
 						return throwError(() => error);
 					})
 				)
 				.subscribe(() => {
 					this.authService.logout();
-					console.log('success logging out');
 					this.router.navigate([`/exit`]);
 				});
 		} else {

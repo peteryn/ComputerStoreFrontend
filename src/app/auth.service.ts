@@ -6,10 +6,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 	providedIn: 'root',
 })
 export class AuthService {
-	constructor(private http: HttpClient) {
-		console.log('constructor');
-		this.http.get('/api/check');
-	}
+	constructor(private http: HttpClient) {}
 
 	isAuthenticted(): boolean {
 		const temp = localStorage.getItem('timestamp');
@@ -29,7 +26,6 @@ export class AuthService {
 		const expire = new Date();
 		expire.setMinutes(expire.getMinutes() + 5);
 		localStorage.setItem('timestamp', expire.toString());
-		console.log(expire.toString());
 	}
 
 	logout() {

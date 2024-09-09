@@ -5,13 +5,12 @@ import { catchError, Observable, throwError } from 'rxjs';
 import { Router } from '@angular/router';
 
 export const authorizationGuard: CanActivateFn = (route, state) => {
-	console.log(`router is ${route}`);
 
 	const http: HttpClient = inject(HttpClient);
 	const router: Router = inject(Router);
 	let allowLogin = false;
 	return new Observable<boolean>((observer) => {
-		http.get('/api/protected', { withCredentials: true, observe: 'response' })
+		http.get('/api/check', { withCredentials: true, observe: 'response' })
 			.pipe(
 				catchError((error: HttpErrorResponse) => {
 					localStorage.setItem('last_visited_url', route.url[0].toString())
@@ -21,7 +20,7 @@ export const authorizationGuard: CanActivateFn = (route, state) => {
 					return throwError(() => error);
 				})
 			)
-			.subscribe((res: any) => {
+			.subscribe(() => {
 				allowLogin = true;
 				observer.next(true);
 				observer.complete();

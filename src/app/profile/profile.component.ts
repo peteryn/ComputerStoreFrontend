@@ -26,7 +26,7 @@ export class ProfileComponent {
 
 	onSubmit() {
 		this.http
-			.put('/api/update', { firstName: this.model.firstName, lastName: this.model.lastName })
+			.put('/api/details', { firstName: this.model.firstName, lastName: this.model.lastName })
 			.subscribe(() => {
 				SuccessToastComponent.showToast();
 			});

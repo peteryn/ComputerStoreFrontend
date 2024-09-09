@@ -26,11 +26,9 @@ export class AppComponent {
 	}
 
 	onLogout() {
-		console.log('Log out');
 		this.http
 			.post('/api/logout', {}, { withCredentials: true, observe: 'response' })
 			.subscribe((res) => {
-				console.log(res);
 				this.router.navigate(['/login']);
 			});
 		this.authService.logout();
