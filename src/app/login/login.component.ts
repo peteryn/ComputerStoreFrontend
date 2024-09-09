@@ -5,11 +5,12 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { catchError, throwError } from 'rxjs';
 import { AuthService } from '../auth.service';
+import { FailureToastComponent } from '../failure-toast/failure-toast.component';
 
 @Component({
 	selector: 'app-login',
 	standalone: true,
-	imports: [FormsModule],
+	imports: [FormsModule, FailureToastComponent],
 	templateUrl: './login.component.html',
 	styleUrl: './login.component.css',
 })
@@ -32,7 +33,7 @@ export class LoginComponent {
 			)
 			.pipe(
 				catchError((error: HttpErrorResponse) => {
-					console.log('Error logging in');
+					FailureToastComponent.showToast();
 					return throwError(() => error);
 				})
 			)

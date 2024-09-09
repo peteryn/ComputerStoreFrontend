@@ -34,6 +34,7 @@ export class AccountSettingsComponent {
 				)
 				.subscribe(() => {
 					console.log('Sucessfully updated');
+					SuccessToastComponent.showToast();
 				});
 
 			console.log('passed');

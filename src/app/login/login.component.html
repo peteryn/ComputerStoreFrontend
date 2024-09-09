@@ -1,41 +1,48 @@
 <main class="form-signin p-3 container mt-5" novalidate>
 	<div class="row">
-
-	<form (ngSubmit)="onSubmit()" #registerForm="ngForm" class="mx-auto col-lg-4 p-5 border rounded">
-		<h1 class="mb-2">Login</h1>
-		<div class="form-floating mt-2">
-			<input
-				type="email"
-				class="form-control was-validated"
-				id="email"
-				placeholder="name@example.com"
-				required
-				[(ngModel)]="model.username"
-				name="email"
-				#emailField="ngModel"
-			/>
-			<label for="email">Email address</label>
-		</div>
-		<div class="form-floating">
-			<input
-				type="password"
-				class="form-control"
-				id="password"
-				placeholder="Password"
-				required
-				[(ngModel)]="model.password"
-				#passwordField="ngModel"
-				name="password"
-			/>
-			<label for="password">Password</label>
-		</div>
-		<button
-			class="btn btn-primary w-100 py-2"
-			type="submit"
-			[disabled]="!registerForm.form.valid"
+		<form
+			(ngSubmit)="onSubmit()"
+			#registerForm="ngForm"
+			class="mx-auto col-lg-4 p-5 border rounded"
 		>
-			Sign in
-		</button>
-	</form>
+			<h1 class="mb-2">Login</h1>
+			<div class="form-floating mt-2">
+				<input
+					type="email"
+					class="form-control was-validated"
+					id="email"
+					placeholder="name@example.com"
+					required
+					[(ngModel)]="model.username"
+					name="email"
+					#emailField="ngModel"
+				/>
+				<label for="email">Email address</label>
+			</div>
+			<div class="form-floating">
+				<input
+					type="password"
+					class="form-control"
+					id="password"
+					placeholder="Password"
+					required
+					[(ngModel)]="model.password"
+					#passwordField="ngModel"
+					name="password"
+				/>
+				<label for="password">Password</label>
+			</div>
+			<button
+				class="btn btn-primary w-100 py-2"
+				type="submit"
+				[disabled]="!registerForm.form.valid"
+			>
+				Sign in
+			</button>
+		</form>
 	</div>
 </main>
+
+<app-failure-toast
+	[message]="'Username or Password is incorrect'"
+></app-failure-toast>

@@ -6,11 +6,12 @@ import { CommonModule } from '@angular/common';
 import { catchError, throwError } from 'rxjs';
 import { Router } from '@angular/router';
 import { SuccessToastComponent } from '../success-toast/success-toast.component';
+import { FailureToastComponent } from '../failure-toast/failure-toast.component';
 
 @Component({
 	selector: 'app-register',
 	standalone: true,
-	imports: [FormsModule, CommonModule, SuccessToastComponent],
+	imports: [FormsModule, CommonModule, SuccessToastComponent, FailureToastComponent],
 	templateUrl: './register.component.html',
 	styleUrl: './register.component.css',
 })
@@ -29,11 +30,7 @@ export class RegisterComponent {
 				.post('/api/register', this.model, { observe: 'response' })
 				.pipe(
 					catchError((error: HttpErrorResponse) => {
-						const failureToast = document.getElementById('failure-toast');
-						const toastBootstrap = (window as any).bootstrap.Toast.getOrCreateInstance(
-							failureToast
-						);
-						toastBootstrap.show();
+						FailureToastComponent.showToast();
 						return throwError(() => error);
 					})
 				)
