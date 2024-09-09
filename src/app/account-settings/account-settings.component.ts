@@ -3,11 +3,12 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { catchError, throwError } from 'rxjs';
 import { User } from '../user';
+import { SuccessToastComponent } from '../success-toast/success-toast.component';
 
 @Component({
 	selector: 'app-account-settings',
 	standalone: true,
-	imports: [FormsModule],
+	imports: [FormsModule, SuccessToastComponent],
 	templateUrl: './account-settings.component.html',
 	styleUrl: './account-settings.component.css',
 })

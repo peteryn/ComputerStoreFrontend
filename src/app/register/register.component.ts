@@ -5,11 +5,12 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { catchError, throwError } from 'rxjs';
 import { Router } from '@angular/router';
+import { SuccessToastComponent } from '../success-toast/success-toast.component';
 
 @Component({
 	selector: 'app-register',
 	standalone: true,
-	imports: [FormsModule, CommonModule],
+	imports: [FormsModule, CommonModule, SuccessToastComponent],
 	templateUrl: './register.component.html',
 	styleUrl: './register.component.css',
 })
@@ -37,11 +38,7 @@ export class RegisterComponent {
 					})
 				)
 				.subscribe(() => {
-					const successToast = document.getElementById('success-toast');
-					const toastBootstrap = (window as any).bootstrap.Toast.getOrCreateInstance(
-						successToast
-					);
-					toastBootstrap.show();
+					SuccessToastComponent.showToast();
 					setTimeout(() => {
 						this.router.navigate(['/login']);
 					}, 3000);
