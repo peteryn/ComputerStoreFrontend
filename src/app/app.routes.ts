@@ -6,6 +6,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { TestComponent } from './test/test.component';
 import { authorizationGuard } from './authorization.guard';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
+import { ExitPageComponent } from './exit-page/exit-page.component';
 
 export const routes: Routes = [
 	{ path: '', component: HomeComponent },
@@ -18,4 +19,5 @@ export const routes: Routes = [
 	},
 	{ path: 'profile', component: ProfileComponent, canActivate: [authorizationGuard] },
 	{ path: 'test', component: TestComponent, canActivate: [authorizationGuard] },
+	{ path: 'exit', component: ExitPageComponent },
 ];

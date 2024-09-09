@@ -1,8 +1,8 @@
 <div class="container p-3 my-5">
 	<div class="row">
 		<form
-			class="mx-auto col-lg-5 p-5 border border-danger rounded needs-validation"
-			(ngSubmit)="onSubmit()"
+			class="mx-auto col-lg-6 p-5 border border-danger rounded needs-validation"
+			(ngSubmit)="changePassword()"
 		>
 			<h1>Change Password</h1>
 			<div class="py-2">
@@ -13,7 +13,7 @@
 					id="old-password"
 					name="oldPassword"
 					required
-                    [(ngModel)]="oldPassword"
+					[(ngModel)]="oldPassword"
 				/>
 				<div class="invalid-feedback">Please enter your old password</div>
 			</div>
@@ -26,7 +26,7 @@
 					name="newPassword"
 					required
 					pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$"
-                    [(ngModel)]="newPassword"
+					[(ngModel)]="newPassword"
 				/>
 				<div class="invalid-feedback">Please enter a valid password</div>
 			</div>
@@ -35,4 +35,36 @@
 	</div>
 </div>
 
-<app-success-toast [message]="'Success! Password changed'"></app-success-toast>
+<div class="container p-3 my-5">
+	<div class="row">
+		<form
+			class="mx-auto col-lg-6 p-5 border border-danger rounded needs-validation"
+			(ngSubmit)="deleteAccount()"
+		>
+			<h1 class="pt-2 pb-4">Delete Account</h1>
+
+			<div class="d-flex flex-row py-2 gap-3 align-items-center">
+				<div class="">
+					<label for="password" class="form-label m-0">Password</label>
+				</div>
+
+				<div class="flex-grow-1">
+					<input
+						type="password"
+						class="form-control"
+						id="password"
+						name="password"
+						required
+						[(ngModel)]="currentPassword"
+					/>
+				</div>
+
+				<div class="">
+					<button type="submit" class="btn btn-danger col-12">Delete Account</button>
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<app-success-toast [message]="'Success! Password changed'"></app-success-toast>
+</div>
