@@ -1,83 +1,41 @@
 <main class="p-3 container mt-5">
-  <div class="row">
-    <form
-      class="needs-validation mx-auto col-lg-6 p-5 border rounded"
-      (ngSubmit)="onSubmit()"
-      novalidate
-      #registerForm="ngForm"
-    >
-      <h1 class="mb-2">Profile</h1>
-      <div class="mb-3 row">
-        <div class="col">
-          <label for="firstNameField" class="form-label">First Name</label>
-          <input
-            class="form-control"
-            type="text"
-            placeholder="{{ model.firstName }}"
-            id="firstNameField"
-            name="firstName"
-            required
-            [(ngModel)]="model.firstName"
-          />
-        </div>
-        <div class="col">
-          <label for="lastNameField" class="form-label">Last Name</label>
-          <input
-            class="form-control"
-            type="text"
-            placeholder="{{ model.lastName }}"
-            id="lastNameField"
-            name="lastName"
-            required
-            [(ngModel)]="model.lastName"
-          />
-        </div>
-      </div>
-      <button type="submit" class="btn btn-primary w-100">Submit</button>
-    </form>
-  </div>
+	<div class="row">
+		<form
+			class="needs-validation mx-auto col-lg-6 p-5 border rounded"
+			(ngSubmit)="onSubmit()"
+			novalidate
+			#registerForm="ngForm"
+		>
+			<h1 class="mb-2">Profile</h1>
+			<div class="mb-3 row">
+				<div class="col">
+					<label for="firstNameField" class="form-label">First Name</label>
+					<input
+						class="form-control"
+						type="text"
+						placeholder="{{ model.firstName }}"
+						id="firstNameField"
+						name="firstName"
+						required
+						[(ngModel)]="model.firstName"
+					/>
+				</div>
+				<div class="col">
+					<label for="lastNameField" class="form-label">Last Name</label>
+					<input
+						class="form-control"
+						type="text"
+						placeholder="{{ model.lastName }}"
+						id="lastNameField"
+						name="lastName"
+						required
+						[(ngModel)]="model.lastName"
+					/>
+				</div>
+			</div>
+			<button type="submit" class="btn btn-primary w-100">Submit</button>
+		</form>
+	</div>
 </main>
 
-<div
-  class="toast-container position-fixed bottom-0 start-50 translate-middle-x p-3"
->
-  <div
-    class="toast align-items-center text-bg-primary border-0 text-bg-success"
-    role="alert"
-    aria-live="assertive"
-    aria-atomic="true"
-    id="success-toast"
-  >
-    <div class="d-flex">
-      <div class="toast-body">Success! Please verify your email</div>
-      <button
-        type="button"
-        class="btn-close btn-close-white me-2 m-auto"
-        data-bs-dismiss="toast"
-        aria-label="Close"
-      ></button>
-    </div>
-  </div>
-</div>
-
-<div
-  class="toast-container position-fixed bottom-0 start-50 translate-middle-x p-3"
->
-  <div
-    class="toast align-items-center text-bg-primary border-0 text-bg-danger"
-    role="alert"
-    aria-live="assertive"
-    aria-atomic="true"
-    id="failure-toast"
-  >
-    <div class="d-flex">
-      <div class="toast-body">Username already taken</div>
-      <button
-        type="button"
-        class="btn-close btn-close-white me-2 m-auto"
-        data-bs-dismiss="toast"
-        aria-label="Close"
-      ></button>
-    </div>
-  </div>
-</div>
+<app-success-toast [message]="'Profile Updated!'"></app-success-toast>
