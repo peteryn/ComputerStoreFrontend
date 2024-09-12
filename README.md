@@ -1,27 +1,32 @@
-# ComputerStoreFrontend
+# User Authentication and Authorization Demo
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.8.
+A full stack CRUD application compromised of an Angular frontend (this repository) and a Spring Boot
+REST API ([repo](https://github.com/peteryn/ComputerStore)). Users are able to:
 
-## Development server
+1. Create an account
+2. Log in
+3. View profile information
+4. Update profile
+5. Change password
+6. Delete account
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Authentication
 
-## Code scaffolding
+Users register an acount with an email and password. The email and password are used to authenticate a user. When
+changing a password or deleting an account, users must enter their password again.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Persistence
 
-## Build
+User information is stored in a PostgreSQL database managed by Spring Data. Passwords are securely encrypted using
+the Bcrypt encoder. The Bcrypt encoder handles the hashing and salting.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Authorization
 
-## Running unit tests
+Authorization is handled using JSON Web Tokens (JWT). The JWT's expire after 5 minutes and this causes the user to have
+to manually reauthenticate. This expiry time can be adjusted.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Goals
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+-   [ ] Deploy backend on AWS
+-   [ ] Deploy frontend on AWS
+-   [ ] Add more functionality to showcase REST API naming conventions
