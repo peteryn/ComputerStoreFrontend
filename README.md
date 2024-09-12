@@ -25,7 +25,7 @@ the Bcrypt encoder. The Bcrypt encoder handles the hashing and salting.
 Authorization is handled using JSON Web Tokens (JWT). The JWT's expire after 5 minutes and this causes the user to have
 to manually reauthenticate. This expiry time can be adjusted.
 
-## Goals
+# Goals
 
 -   [ ] Deploy backend on AWS
 -   [ ] Deploy frontend on AWS
