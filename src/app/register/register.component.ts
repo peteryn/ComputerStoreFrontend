@@ -7,6 +7,7 @@ import { catchError, throwError } from 'rxjs';
 import { Router } from '@angular/router';
 import { SuccessToastComponent } from '../success-toast/success-toast.component';
 import { FailureToastComponent } from '../failure-toast/failure-toast.component';
+import { AuthService } from '../auth.service';
 
 @Component({
 	selector: 'app-register',
@@ -16,7 +17,11 @@ import { FailureToastComponent } from '../failure-toast/failure-toast.component'
 	styleUrl: './register.component.css',
 })
 export class RegisterComponent {
-	constructor(private http: HttpClient, private router: Router) {}
+	constructor(private http: HttpClient, private router: Router, private auth: AuthService) {
+		if (auth.isAuthenticted()) {
+			this.router.navigate(['/profile']);
+		}
+	}
 
 	model = new User('', '', '', '');
 
