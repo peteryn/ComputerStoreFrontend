@@ -1,5 +1,7 @@
 # User Authentication and Authorization Demo
 
+[userauthdemo.com](https://userauthdemo.com)
+
 A full stack CRUD application compromised of an Angular frontend (this repository) and a Spring Boot
 REST API ([repo](https://github.com/peteryn/ComputerStore)). Users are able to:
 
@@ -27,6 +29,6 @@ to manually reauthenticate. This expiry time can be adjusted.
 
 # Goals
 
--   [ ] Deploy backend on AWS
--   [ ] Deploy frontend on AWS
+-   [X] Deploy backend on AWS
+-   [X] Deploy frontend on AWS
 -   [ ] Add more functionality to showcase REST API naming conventions
